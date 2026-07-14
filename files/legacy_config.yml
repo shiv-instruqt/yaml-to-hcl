@@ -1,0 +1,6 @@
+version: "3"
+containers:
+- name: webserver
+  image: nginx:1.25
+  ports:
+  - 80
