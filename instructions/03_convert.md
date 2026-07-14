@@ -12,29 +12,41 @@ Your `sandbox.hcl` must define a container that matches the legacy file:
 2. An `image` block whose `name` is **`nginx:1.25`**.
 3. Port **`80`** exposed.
 
-### Steps
+### (Optional) Install a text editor
 
-In the Terminal tab, create the working directory and open the file:
+This workstation is a minimal image, so `nano` and `vim` are not installed by default. To use one, install both with:
+
+```bash
+apt-get update && apt-get install -y nano vim
+```
+
+This needs the container to have internet access. If it fails, use the paste method below — it works without any editor.
+
+### Create the file
+
+Paste this skeleton into the **Terminal**, then fill in the two blanks (`____`) using the mapping from the previous page:
 
 ```bash
 mkdir -p /root/work
-nano /root/work/sandbox.hcl
-```
-
-This is the shape you're aiming for (fill it in from the mapping table on the previous page):
-
-```hcl
+cat > /root/work/sandbox.hcl <<'HCL'
 resource "container" "webserver" {
   image {
-    name = "..."
+    name = "____"      # the image from config.yml
   }
   port {
-    local = ...
+    local = ____       # the port from config.yml
   }
 }
+HCL
 ```
 
-Save with `Ctrl+X`, then `Y`, then `Enter`.
+Check what you wrote:
+
+```bash
+cat /root/work/sandbox.hcl
+```
+
+If a blank is still there, re-run the block above with the real value filled in (or edit the file with `nano`/`vim` if you installed one).
 
 ### Check your work
 
